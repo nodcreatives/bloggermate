@@ -4,544 +4,293 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>블로거메이트 서비스 소개서</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #f8f7f4;
+    --bg: #f7f6f3;
     --surface: #ffffff;
-    --surface2: #f2f0ec;
-    --border: #e5e2db;
-    --text-primary: #1a1917;
-    --text-secondary: #6b6860;
-    --text-hint: #9e9c97;
-    --blue-light: #e8f1fb;
-    --blue-mid: #2d7dd2;
-    --blue-dark: #0e4d8f;
-    --green-light: #eaf3de;
-    --green-mid: #3b6d11;
-    --accent: #2d7dd2;
+    --surface2: #f0ede8;
+    --border: #e3dfd8;
+    --text-primary: #1c1a17;
+    --text-secondary: #6b6557;
+    --text-hint: #a09a90;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --accent-dark: #1e40af;
+    --green-light: #f0fdf4;
+    --green-mid: #16a34a;
+    --kakao: #FEE500;
+    --kakao-text: #1a1917;
   }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; }
 
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 48px 20px 80px;
-  }
+  /* HERO */
+  .hero { background: var(--text-primary); color: #fff; padding: 64px 24px 56px; text-align: center; }
+  .hero-logo { width: 60px; height: 60px; object-fit: contain; margin-bottom: 18px; mix-blend-mode: screen; }
+  .hero-brand { font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+  .hero-title { font-size: clamp(28px, 5vw, 44px); font-weight: 900; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.02em; }
+  .hero-title em { font-style: normal; color: #60a5fa; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 44px; line-height: 1.6; }
+  .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 32px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 5px; letter-spacing: -0.02em; }
+  .stat-num em { font-style: normal; color: #60a5fa; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 400; }
 
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-  }
+  /* MAIN */
+  .main { max-width: 900px; margin: 0 auto; padding: 56px 24px 80px; }
 
-  /* Header */
-  .header {
-    margin-bottom: 48px;
-  }
-  .logo-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .logo-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .logo-text {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .header-title {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-  .header-sub {
-    font-size: 15px;
-    color: var(--text-secondary);
-  }
+  /* SECTION HEADER */
+  .section-header { margin-bottom: 28px; }
+  .section-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
+  .section-title { font-size: 26px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .sep { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
 
-  /* Section */
-  .section { margin-bottom: 56px; }
-  .section-header { margin-bottom: 24px; }
-  .section-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-  .section-title {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-  }
-  .section-desc {
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-
-  .sep {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 48px 0;
-  }
-
-  /* Plan grid */
-  .plan-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 16px;
-  }
-
-  .plan-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    position: relative;
-    transition: box-shadow 0.2s;
-  }
-  .plan-card:hover {
-    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  }
-  .plan-card.featured {
-    border: 2px solid var(--blue-mid);
-  }
-
-  .rec-tag {
-    position: absolute;
-    top: -1px;
-    right: 20px;
-    background: var(--blue-mid);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 0 0 10px 10px;
-  }
-
-  .plan-badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 6px;
-    margin-bottom: 12px;
-  }
-  .badge-pro { background: var(--blue-light); color: var(--blue-dark); }
+  /* PLAN GRID */
+  .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+  .plan-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+  .plan-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .plan-card.featured { border: 2px solid var(--accent); }
+  .rec-tag { position: absolute; top: -1px; right: 24px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 0 0 12px 12px; letter-spacing: 0.04em; }
+  .plan-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 6px; margin-bottom: 14px; }
+  .badge-pro { background: var(--accent-light); color: var(--accent-dark); }
   .badge-basic { background: var(--surface2); color: var(--text-secondary); }
+  .plan-name { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .plan-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 22px; }
+  .feature-list { list-style: none; margin-bottom: 26px; }
+  .feature-list li { font-size: 13px; color: var(--text-secondary); padding: 5px 0; display: flex; align-items: flex-start; gap: 9px; }
+  .fi { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; }
+  .fi-on { background: var(--accent-light); color: var(--accent); }
+  .fi-off { background: var(--surface2); color: var(--text-hint); }
+  .fi-shield { background: var(--green-light); color: var(--green-mid); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
 
-  .plan-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-  }
-  .plan-desc {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-
-  .feature-list {
-    list-style: none;
-    margin-bottom: 24px;
-  }
-  .feature-list li {
-    font-size: 13px;
-    color: var(--text-secondary);
-    padding: 5px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .feat-icon {
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 1px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px;
-  }
-  .feat-icon.on { background: var(--blue-light); color: var(--blue-dark); }
-  .feat-icon.off { background: var(--surface2); color: var(--text-hint); }
-  .feat-icon.shield { background: #eaf3de; color: #3b6d11; }
-
-  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-  /* Price table */
-  .price-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-bottom: 20px;
-  }
-  .price-table th {
-    text-align: left;
-    padding: 7px 10px;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-hint);
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--border);
-  }
-  .price-table td {
-    padding: 8px 10px;
-    color: var(--text-primary);
-    border-bottom: 1px solid var(--border);
-  }
+  /* PRICE TABLE */
+  .price-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 22px; }
+  .price-table th { text-align: left; padding: 8px 10px; font-size: 11px; font-weight: 700; color: var(--text-hint); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+  .price-table td { padding: 9px 10px; color: var(--text-primary); border-bottom: 1px solid var(--border); }
   .price-table tr:last-child td { border-bottom: none; }
-  .price-table .price-val { font-weight: 500; color: var(--blue-mid); }
-  .best-row { background: var(--blue-light); }
-  .best-row td { color: var(--blue-dark); font-weight: 700; }
+  .price-val { font-weight: 700; color: var(--accent); }
+  .best-row { background: var(--accent-light); }
+  .best-row td { color: var(--accent-dark); font-weight: 700; }
 
-  /* Promo box */
-  .promo-box {
-    background: var(--surface2);
-    border-radius: 10px;
-    padding: 16px 18px;
-  }
-  .promo-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .promo-item {
-    font-size: 12px;
-    color: var(--text-secondary);
-    padding: 3px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .promo-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--green-mid);
-    flex-shrink: 0;
-    margin-top: 5px;
-  }
+  /* PROMO BOX */
+  .promo-box { background: var(--surface2); border-radius: 12px; padding: 18px 20px; }
+  .promo-title { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .promo-item { font-size: 12px; color: var(--text-secondary); padding: 3px 0; display: flex; align-items: flex-start; gap: 8px; }
+  .pd { width: 5px; height: 5px; border-radius: 50%; background: var(--green-mid); flex-shrink: 0; margin-top: 6px; }
 
-  /* How-it-works */
-  .how-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .how-card {
-    background: var(--surface2);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .how-num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-  }
-  .how-label {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-  }
-  .how-desc {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
+  /* HOW IT WORKS */
+  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .how-card { background: var(--surface2); border-radius: 14px; padding: 22px; }
+  .how-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+  .how-label { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 7px; }
+  .how-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
 
-  /* Tags */
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 28px;
-  }
-  .tag {
-    font-size: 12px;
-    background: var(--blue-light);
-    color: var(--blue-dark);
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-weight: 500;
-  }
+  /* TAGS */
 
-  /* Reaction cards */
-  .reaction-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-  }
-  .reaction-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-    position: relative;
-    transition: box-shadow 0.2s;
-  }
-  .reaction-card:hover {
-    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  }
-  .reaction-card.featured {
-    border: 2px solid var(--blue-mid);
-  }
-
-  .react-tier {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-hint);
-    margin-bottom: 6px;
-  }
-  .react-price {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 18px;
-  }
-  .react-price span {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--text-secondary);
-  }
-  .react-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
+  /* REACTION GRID */
+  .reaction-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .reaction-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 26px; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+  .reaction-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .reaction-card.featured { border: 2px solid var(--accent); }
+  .react-tier { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-hint); margin-bottom: 6px; }
+  .react-price { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; }
+  .react-price span { font-size: 13px; font-weight: 400; color: var(--text-secondary); }
+  .react-stat { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
   .react-stat:last-of-type { border-bottom: none; }
-  .stat-label { color: var(--text-secondary); }
-  .stat-val { font-weight: 700; color: var(--text-primary); }
+  .slabel { color: var(--text-secondary); }
+  .sval { font-weight: 700; color: var(--text-primary); }
 
-  /* Note */
-  .note-box {
-    background: var(--surface2);
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-top: 16px;
-    font-size: 12px;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .note-icon {
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background: var(--border);
-    color: var(--text-hint);
-    font-size: 10px;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
+  /* NOTE */
+  .note-box { background: var(--surface2); border-radius: 10px; padding: 13px 16px; margin-top: 18px; font-size: 12px; color: var(--text-secondary); display: flex; align-items: flex-start; gap: 8px; }
+  .ni { width: 18px; height: 18px; border-radius: 50%; background: var(--border); color: var(--text-hint); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-  /* Footer */
-  .footer {
-    text-align: center;
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--text-hint);
-  }
+  /* CTA */
+  .cta-section { margin-top: 56px; background: var(--text-primary); border-radius: 24px; padding: 48px 32px; text-align: center; }
+  .cta-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .cta-sub { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 28px; line-height: 1.6; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--kakao); color: var(--kakao-text); font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 700; padding: 16px 32px; border-radius: 14px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; border: none; cursor: pointer; }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  .cta-btn img { width: 22px; height: 22px; object-fit: contain; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 32px 24px; font-size: 12px; color: var(--text-hint); border-top: 1px solid var(--border); }
 
   @media (max-width: 600px) {
-    .header-title { font-size: 26px; }
-    .plan-grid { grid-template-columns: 1fr; }
-    .reaction-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 20px 40px; }
+    .hero-stats { gap: 28px; }
+    .plan-grid, .reaction-grid, .how-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 36px 20px; }
   }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <div class="logo-row">
-      <div class="logo-dot"></div>
-      <span class="logo-text">Blogermate</span>
+<div class="hero">
+  <img class="hero-logo" src="data:image/png;base64,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" alt="블로거메이트 로고">
+  <p class="hero-brand">Bloggermate</p>
+  <h1 class="hero-title">블로그<br><em>성장 솔루션</em></h1>
+  <p class="hero-sub">유입부터 스댓공까지, 블로그 성장의 모든 것을 책임집니다</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <p class="stat-num">2018<em>년~</em></p>
+      <p class="stat-label">서비스 운영</p>
     </div>
-    <h1 class="header-title">서비스 소개서</h1>
-    <p class="header-sub">블로거메이트의 네이버 블로그 성장 솔루션을 소개합니다</p>
+    <div class="stat-item">
+      <p class="stat-num">1<em>만+</em></p>
+      <p class="stat-label">누적 가입자</p>
+    </div>
   </div>
+</div>
+
+<div class="main">
 
   <!-- 방문자 플러스+ -->
-  <div class="section">
-    <div class="section-header">
-      <p class="section-eyebrow">Service 01</p>
-      <h2 class="section-title">방문자 플러스+</h2>
-      <p class="section-desc">실제 방문자 패턴 기반의 정밀 유입 서비스</p>
+  <div class="section-header">
+    <span class="section-eyebrow">Service 01</span>
+    <h2 class="section-title">방문자 플러스+</h2>
+    <p class="section-desc">실제 방문자 패턴 기반의 정밀 유입 서비스</p>
+  </div>
+
+  <div class="plan-grid">
+    <div class="plan-card featured">
+      <div class="rec-tag">추천</div>
+      <span class="plan-badge badge-pro">PRO</span>
+      <p class="plan-name">PRO 요금제</p>
+      <p class="plan-desc">실제 방문자 패턴에 가까운 정밀 유입. 조회·체류·분산 유입 모두 포함됩니다.</p>
+      <ul class="feature-list">
+        <li><span class="fi fi-on">✓</span>최신 포스팅 20개 이상 자동 조회</li>
+        <li><span class="fi fi-on">✓</span>각 유입당 체류 2분 이상 유지</li>
+        <li><span class="fi fi-on">✓</span>피크타임 중심 시간대별 분산 유입</li>
+        <li><span class="fi fi-on">✓</span>동일 IP·패턴 없이 자연스러운 유입</li>
+        <li><span class="fi fi-shield">✓</span>체험단 플랫폼 제재 회피 최적화</li>
+      </ul>
+      <div class="divider"></div>
+      <table class="price-table">
+        <thead><tr><th>일 방문자</th><th>월 요금</th></tr></thead>
+        <tbody>
+          <tr><td>500명</td><td class="price-val">30,000원</td></tr>
+          <tr><td>1,000명</td><td class="price-val">30,000원</td></tr>
+          <tr><td>2,000명</td><td class="price-val">40,000원</td></tr>
+          <tr><td>3,000명</td><td class="price-val">40,000원</td></tr>
+          <tr class="best-row"><td>5,000명 ★ 최다 가입</td><td>60,000원</td></tr>
+          <tr><td>10,000명</td><td class="price-val">100,000원</td></tr>
+          <tr><td>기타</td><td class="price-val">별도 문의</td></tr>
+        </tbody>
+      </table>
+      <div class="promo-box">
+        <p class="promo-title">🎁 프로모션 혜택</p>
+        <div class="promo-item"><div class="pd"></div>최초 가입 시: 3개월 결제 시 + 3개월 무료</div>
+        <div class="promo-item"><div class="pd"></div>최초 전환 시: 4개월 결제 시 + 3개월 무료</div>
+        <div class="promo-item"><div class="pd"></div>일반 프로모션: 4개월 결제 시 + 2개월 무료</div>
+      </div>
     </div>
 
-    <div class="plan-grid">
-
-      <!-- PRO -->
-      <div class="plan-card featured">
-        <div class="rec-tag">추천</div>
-        <span class="plan-badge badge-pro">PRO</span>
-        <p class="plan-name">PRO 요금제</p>
-        <p class="plan-desc">실제 방문자 패턴에 가까운 정밀 유입. 조회·체류·분산 유입 모두 포함됩니다.</p>
-        <ul class="feature-list">
-          <li><span class="feat-icon on">✓</span>최신 포스팅 20개 이상 자동 조회</li>
-          <li><span class="feat-icon on">✓</span>각 유입당 체류 2분 이상 유지</li>
-          <li><span class="feat-icon on">✓</span>피크타임 중심 시간대별 분산 유입</li>
-          <li><span class="feat-icon on">✓</span>동일 IP·패턴 없이 자연스러운 유입</li>
-          <li><span class="feat-icon shield">✓</span>체험단 플랫폼 제재 회피 최적화</li>
-        </ul>
-        <div class="divider"></div>
-        <table class="price-table">
-          <thead><tr><th>일 방문자</th><th>월 요금</th></tr></thead>
-          <tbody>
-            <tr><td>500명</td><td class="price-val">30,000원</td></tr>
-            <tr><td>1,000명</td><td class="price-val">30,000원</td></tr>
-            <tr><td>2,000명</td><td class="price-val">40,000원</td></tr>
-            <tr><td>3,000명</td><td class="price-val">40,000원</td></tr>
-            <tr class="best-row"><td>5,000명 ★ 최다 가입</td><td>60,000원</td></tr>
-            <tr><td>10,000명</td><td class="price-val">100,000원</td></tr>
-            <tr><td>기타</td><td class="price-val">별도 문의</td></tr>
-          </tbody>
-        </table>
-        <div class="promo-box">
-          <p class="promo-title">🎁 프로모션 혜택</p>
-          <div class="promo-item"><div class="promo-dot"></div>최초 전환 시: 4개월 결제 시 + 3개월 무료</div>
-          <div class="promo-item"><div class="promo-dot"></div>최초 가입 시: 3개월 결제 시 + 3개월 무료</div>
-          <div class="promo-item"><div class="promo-dot"></div>일반 프로모션: 4개월 결제 시 + 2개월 무료</div>
-        </div>
+    <div class="plan-card">
+      <span class="plan-badge badge-basic">BASIC</span>
+      <p class="plan-name">BASIC 요금제</p>
+      <p class="plan-desc">단순 방문자 증가 중심 서비스. 조회·체류·분산 유입은 포함되지 않습니다.</p>
+      <ul class="feature-list">
+        <li><span class="fi fi-on">✓</span>일 방문자 증가 중심</li>
+        <li><span class="fi fi-on">✓</span>24시간 균등 유입</li>
+        <li><span class="fi fi-off">✕</span>조회·체류 미포함</li>
+        <li><span class="fi fi-off">✕</span>분산 유입 미포함</li>
+      </ul>
+      <div class="divider"></div>
+      <table class="price-table">
+        <thead><tr><th>일 방문자</th><th>월 요금</th></tr></thead>
+        <tbody>
+          <tr><td>500명</td><td class="price-val">20,000원</td></tr>
+          <tr><td>1,000명</td><td class="price-val">20,000원</td></tr>
+          <tr><td>2,000명</td><td class="price-val">30,000원</td></tr>
+          <tr><td>3,000명</td><td class="price-val">30,000원</td></tr>
+          <tr><td>5,000명</td><td class="price-val">50,000원</td></tr>
+          <tr><td>10,000명</td><td class="price-val">90,000원</td></tr>
+          <tr><td>기타</td><td class="price-val">별도 문의</td></tr>
+        </tbody>
+      </table>
+      <div class="promo-box">
+        <p class="promo-title">🎁 프로모션 혜택</p>
+        <div class="promo-item"><div class="pd"></div>일반 프로모션: 3개월 결제 시 + 1개월 무료</div>
       </div>
-
-      <!-- BASIC -->
-      <div class="plan-card">
-        <span class="plan-badge badge-basic">BASIC</span>
-        <p class="plan-name">BASIC 요금제</p>
-        <p class="plan-desc">단순 방문자 증가 중심 서비스. 조회·체류·분산 유입은 포함되지 않습니다.</p>
-        <ul class="feature-list">
-          <li><span class="feat-icon on">✓</span>일 방문자 증가 중심</li>
-          <li><span class="feat-icon on">✓</span>24시간 균등 유입</li>
-          <li><span class="feat-icon off">✕</span>조회·체류 미포함</li>
-          <li><span class="feat-icon off">✕</span>분산 유입 미포함</li>
-        </ul>
-        <div class="divider"></div>
-        <table class="price-table">
-          <thead><tr><th>일 방문자</th><th>월 요금</th></tr></thead>
-          <tbody>
-            <tr><td>500명</td><td class="price-val">20,000원</td></tr>
-            <tr><td>1,000명</td><td class="price-val">20,000원</td></tr>
-            <tr><td>2,000명</td><td class="price-val">30,000원</td></tr>
-            <tr><td>3,000명</td><td class="price-val">30,000원</td></tr>
-            <tr><td>5,000명</td><td class="price-val">50,000원</td></tr>
-            <tr><td>10,000명</td><td class="price-val">90,000원</td></tr>
-            <tr><td>기타</td><td class="price-val">별도 문의</td></tr>
-          </tbody>
-        </table>
-        <div class="promo-box">
-          <p class="promo-title">🎁 프로모션 혜택</p>
-          <div class="promo-item"><div class="promo-dot"></div>일반 프로모션: 3개월 결제 시 + 1개월 무료</div>
-        </div>
-      </div>
-
     </div>
   </div>
 
   <hr class="sep">
 
   <!-- 리액션 부스터 -->
-  <div class="section">
-    <div class="section-header">
-      <p class="section-eyebrow">Service 02 · 신규</p>
-      <h2 class="section-title">리액션 부스터</h2>
-      <p class="section-desc">네이버 블로그 포스팅의 공감·댓글·스크랩을 자연스럽게 높여주는 반응 강화 서비스</p>
-    </div>
+  <div class="section-header">
+    <span class="section-eyebrow">Service 02 · 신규</span>
+    <h2 class="section-title">리액션 부스터</h2>
+    <p class="section-desc">블로그 포스팅의 공감·댓글·스크랩을 자연스럽게 높여주는 반응 강화 서비스</p>
+  </div>
 
-    <div class="how-grid">
-      <div class="how-card">
-        <p class="how-num">HOW 01</p>
-        <p class="how-label">실제 키워드 검색 유입</p>
-        <p class="how-desc">단순 직접 방문이 아닌 실제 키워드 검색을 통해 자연스럽게 유입하여 반응을 남깁니다.</p>
-      </div>
-      <div class="how-card">
-        <p class="how-num">HOW 02</p>
-        <p class="how-label">AI 포스팅 분석 댓글</p>
-        <p class="how-desc">AI가 포스팅 내용을 직접 분석하여 실제 사람이 작성한 것처럼 자연스러운 댓글을 생성합니다.</p>
-      </div>
-      <div class="how-card">
-        <p class="how-num">HOW 03</p>
-        <p class="how-label">자연스러운 반응 패턴</p>
-        <p class="how-desc">공감·댓글·스크랩이 실제 독자의 행동처럼 자연스럽게 누적되어 신뢰도 높은 블로그를 만듭니다.</p>
-      </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <p class="how-num">HOW 01</p>
+      <p class="how-label">실제 키워드 검색 유입</p>
+      <p class="how-desc">단순 직접 방문이 아닌 실제 키워드 검색을 통해 자연스럽게 유입하여 반응을 남깁니다.</p>
     </div>
-
-    <div class="tag-row">
-      <span class="tag">네이버 블로그 전용</span>
-      <span class="tag">AI 댓글 자동 생성</span>
-      <span class="tag">키워드 검색 유입</span>
-      <span class="tag">일 포스팅 최대 1개</span>
+    <div class="how-card">
+      <p class="how-num">HOW 02</p>
+      <p class="how-label">AI 포스팅 분석 댓글</p>
+      <p class="how-desc">AI가 포스팅 내용을 직접 분석하여 실제 사람이 작성한 것처럼 자연스러운 댓글을 생성합니다.</p>
     </div>
-
-    <div class="reaction-grid">
-      <div class="reaction-card">
-        <p class="react-tier">Lite</p>
-        <p class="react-price">20,000원 <span>/ 월</span></p>
-        <div class="react-stat"><span class="stat-label">공감</span><span class="stat-val">5~10개</span></div>
-        <div class="react-stat"><span class="stat-label">댓글</span><span class="stat-val">2~5개</span></div>
-        <div class="react-stat"><span class="stat-label">스크랩</span><span class="stat-val">2~4개</span></div>
-      </div>
-      <div class="reaction-card">
-        <p class="react-tier">Basic</p>
-        <p class="react-price">40,000원 <span>/ 월</span></p>
-        <div class="react-stat"><span class="stat-label">공감</span><span class="stat-val">10~20개</span></div>
-        <div class="react-stat"><span class="stat-label">댓글</span><span class="stat-val">5~10개</span></div>
-        <div class="react-stat"><span class="stat-label">스크랩</span><span class="stat-val">5~10개</span></div>
-      </div>
-      <div class="reaction-card featured">
-        <div class="rec-tag">Best</div>
-        <p class="react-tier">Pro</p>
-        <p class="react-price">70,000원 <span>/ 월</span></p>
-        <div class="react-stat"><span class="stat-label">공감</span><span class="stat-val">25~40개</span></div>
-        <div class="react-stat"><span class="stat-label">댓글</span><span class="stat-val">10~15개</span></div>
-        <div class="react-stat"><span class="stat-label">스크랩</span><span class="stat-val">10~15개</span></div>
-      </div>
-    </div>
-
-    <div class="note-box">
-      <div class="note-icon">i</div>
-      모든 요금제 공통: 일 포스팅 최대 1개 기준 적용
+    <div class="how-card">
+      <p class="how-num">HOW 03</p>
+      <p class="how-label">자연스러운 반응 패턴</p>
+      <p class="how-desc">공감·댓글·스크랩이 실제 독자의 행동처럼 자연스럽게 누적되어 신뢰도 높은 블로그를 만듭니다.</p>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>© 블로거메이트 · 문의사항은 채널로 연락 주세요</p>
+  <div class="reaction-grid">
+    <div class="reaction-card">
+      <p class="react-tier">Lite</p>
+      <p class="react-price">20,000원 <span>/ 월</span></p>
+      <div class="react-stat"><span class="slabel">👍 공감</span><span class="sval">5~10개</span></div>
+      <div class="react-stat"><span class="slabel">💬 댓글</span><span class="sval">2~5개</span></div>
+      <div class="react-stat"><span class="slabel">🔖 스크랩</span><span class="sval">2~4개</span></div>
+    </div>
+    <div class="reaction-card">
+      <p class="react-tier">Basic</p>
+      <p class="react-price">40,000원 <span>/ 월</span></p>
+      <div class="react-stat"><span class="slabel">👍 공감</span><span class="sval">10~20개</span></div>
+      <div class="react-stat"><span class="slabel">💬 댓글</span><span class="sval">5~10개</span></div>
+      <div class="react-stat"><span class="slabel">🔖 스크랩</span><span class="sval">5~10개</span></div>
+    </div>
+    <div class="reaction-card featured">
+      <div class="rec-tag">Best</div>
+      <p class="react-tier">Pro</p>
+      <p class="react-price">70,000원 <span>/ 월</span></p>
+      <div class="react-stat"><span class="slabel">👍 공감</span><span class="sval">25~40개</span></div>
+      <div class="react-stat"><span class="slabel">💬 댓글</span><span class="sval">10~15개</span></div>
+      <div class="react-stat"><span class="slabel">🔖 스크랩</span><span class="sval">10~15개</span></div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="ni">i</div>
+    일 포스팅 최대 1개
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="cta-title">지금 바로 시작해보세요</p>
+    <p class="cta-sub">궁금한 점은 카카오톡 채널로 편하게 문의해 주세요<br>빠르게 답변 드리겠습니다</p>
+    <a class="cta-btn" href="http://pf.kakao.com/_Tpnxlxb" target="_blank">
+      카카오톡 채널 문의하기
+    </a>
   </div>
 
 </div>
+
+<div class="footer">
+  <p>© 블로거메이트 · 2018년부터 운영 중 · 누적 가입자 1만 명+</p>
+</div>
+
 </body>
 </html>
